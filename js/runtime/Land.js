@@ -1,4 +1,5 @@
 import {Sprite} from "../base/Sprite.js";
+import {Director} from "../Director.js";
 
 export class Land extends Sprite{ //陆地
 	constructor(){
@@ -15,10 +16,9 @@ export class Land extends Sprite{ //陆地
 			image.height
 		);
 		this.landX = 0; //水平变化坐标
-		this.landSpeed = 2; //移动速度
+		this.landSpeed = Director.getInstance().moveSpeed; //移动速度
 	}
 	draw(){
-		console.log(this.landX)
 		if(this.landX>this.img.width){
 			this.landX = 0;
 		}

@@ -3,6 +3,7 @@ import {Director} from "./js/Director.js";
 import {BackGround} from "./js/runtime/BackGround.js";
 import {Land} from "./js/runtime/Land.js";
 import {DataStore} from "./js/base/DataStore.js";
+import {Bird} from "./js/player/Bird.js";
 
 export class Main{ //初始化整个游戏的精灵，作为游戏开始的入口
 	constructor(){
@@ -11,6 +12,7 @@ export class Main{ //初始化整个游戏的精灵，作为游戏开始的入�
 		this.canvas.width = window.innerWidth;
 		this.canvas.height = window.innerHeight;
 		this.dataStore = DataStore.getInstance();
+		this.director = Director.getInstance();
 		const loader = ResourceLoader.create();
 		loader.onLoaded(map => this.onResourceFirstLoader(map));
 
@@ -21,9 +23,15 @@ export class Main{ //初始化整个游戏的精灵，作为游戏开始的入�
 		this.init();
 	}
 	init(){
+
+		this.director.isGameOver = false;
+
 		this.dataStore
+			.put('penclis',[])
 			.put('background',BackGround)
-			.put('land',Land);
-		Director.getInstance().run();
+			.put('land',Land)
+			.put('birds',Bird);
+		this.director.createPencli();
+		this.director.run();
 	}
 }
