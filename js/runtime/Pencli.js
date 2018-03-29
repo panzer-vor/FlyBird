@@ -1,5 +1,4 @@
 import {Sprite} from "../base/Sprite.js";
-import {Director} from "../Director.js";
 
 export class Pencli extends Sprite{
 	constructor(image,top){
@@ -15,10 +14,11 @@ export class Pencli extends Sprite{
 			image.height,
 		);
 		this.top = top;
+    this.moveSpeed = 2;
 	}
 	draw(){
 
-		this.x = this.x - Director.getInstance().moveSpeed;
+		this.x = this.x - this.moveSpeed;
 		super.draw(
 			this.img,
 			0,

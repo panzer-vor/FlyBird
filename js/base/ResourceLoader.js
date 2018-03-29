@@ -4,7 +4,7 @@ export class ResourceLoader{ //资源文件加载器，确保在图片资源完�
 	constructor(){
 		this.map = new Map(Resources);
 		for(let [key,value] of this.map){
-			const image = new Image();
+			const image = wx.createImage();
 			image.src = value;
 			this.map.set(key,image);
 		}
