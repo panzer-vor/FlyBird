@@ -1,5 +1,5 @@
 import {Sprite} from "../base/Sprite.js";
-
+const { screenWidth, screenHeight } = wx.getSystemInfoSync()
 export class StartButton extends Sprite{ //开始按钮
 	constructor(){
 		const image = Sprite.getImage('startButton');
@@ -9,8 +9,8 @@ export class StartButton extends Sprite{ //开始按钮
 			0,
 			image.width,
 			image.height,
-			(window.innerWidth - image.width) / 2,
-			(window.innerHeight - image.height) / 2.5,
+      (screenWidth - image.width) / 2,
+      (screenHeight - image.height) / 2.5,
 			image.width,
 			image.height,
 		)

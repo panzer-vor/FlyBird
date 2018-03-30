@@ -6,7 +6,7 @@ import {DataStore} from "./js/base/DataStore.js";
 import {Bird} from "./js/player/Bird.js";
 import {StartButton} from "./js/player/StartButton.js";
 import {Score} from "./js/player/Score.js";
-import {ApiExamples} from "./js/ApiExamples"
+import {Creater} from "./js/player/Creater.js";
 export class Main{ //初始化整个游戏的精灵，作为游戏开始的入口
 	constructor(){
 		this.canvas = wx.createCanvas();
@@ -27,8 +27,6 @@ export class Main{ //初始化整个游戏的精灵，作为游戏开始的入�
 		this.dataStore.ctx = this.ctx;
 		this.dataStore.res = map;
     this.createBackgroundMusic();
-    const examples = new ApiExamples();
-    examples.getUserInfo();
 		this.init();
 	}
 	init(){
@@ -39,15 +37,15 @@ export class Main{ //初始化整个游戏的精灵，作为游戏开始的入�
 			.put('land',Land)
 			.put('birds',Bird)
 			.put('startButton',StartButton)
-			.put('score',Score);
+			.put('score',Score)
+      .put('creater',Creater);
 		this.registerEvent();
 		this.director.createPencli();
 		this.director.run();
 	}
 
 	registerEvent(){
-		this.canvas.addEventListener('touchstart',e => {
-			e.preventDefault();
+    wx.onTouchStart(e => {
 			if(this.director.isGameOver){
 				this.init();
 			}else{

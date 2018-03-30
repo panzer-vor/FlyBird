@@ -1,5 +1,5 @@
 import {Sprite} from "../base/Sprite.js";
-
+const { screenWidth, screenHeight } = wx.getSystemInfoSync()
 export class Bird extends Sprite{ //小鸟类 循环渲染图片的三个部分
 	constructor(){
 		const image = Sprite.getImage('birds');
@@ -30,9 +30,9 @@ export class Bird extends Sprite{ //小鸟类 循环渲染图片的三个部分
 		this.clippingHeight = [
 			24,24,24
 		];
-		const birdX = window.innerWidth / 4;
+    const birdX = screenWidth / 4;
 		this.birdsX = [birdX,birdX,birdX];
-		const birdY = window.innerHeight / 2;
+    const birdY = screenHeight / 2;
 		this.birdsY = [birdY,birdY,birdY];
 		const birdWidth = 34;
 		this.birdsWidth = [birdWidth,birdWidth,birdWidth];

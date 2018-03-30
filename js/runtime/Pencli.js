@@ -1,5 +1,5 @@
 import {Sprite} from "../base/Sprite.js";
-
+const { screenWidth, screenHeight } = wx.getSystemInfoSync()
 export class Pencli extends Sprite{
 	constructor(image,top){
 		super(
@@ -8,13 +8,13 @@ export class Pencli extends Sprite{
 			0,
 			image.width,
 			image.height,
-			window.innerWidth,
+      screenWidth,
 			0,
 			image.width,
 			image.height,
 		);
 		this.top = top;
-    this.moveSpeed = 3;
+    this.moveSpeed = 4;
 	}
 	draw(){
 

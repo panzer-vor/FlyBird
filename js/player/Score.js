@@ -1,6 +1,6 @@
 
 import {DataStore} from "../base/DataStore.js";
-
+const { screenWidth, screenHeight } = wx.getSystemInfoSync()
 export class Score{ //记分器类
 	constructor(){
 		this.ctx = DataStore.getInstance().ctx;
@@ -12,8 +12,8 @@ export class Score{ //记分器类
 		this.ctx.fillStyle = '#ff60d7';
 		this.ctx.fillText(
 			this.scoreNumber,
-			window.innerWidth/2,
-			window.innerHeight/18,
+      screenWidth/2,
+      screenHeight/18,
 			1000,
 		)
 	}

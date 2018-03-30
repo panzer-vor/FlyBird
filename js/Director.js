@@ -1,7 +1,7 @@
 import {DataStore} from "./base/DataStore.js";
 import {UpPencli} from "./runtime/UpPencli.js";
 import {DownPencli} from "./runtime/DownPencli.js";
-
+const { screenWidth, screenHeight } = wx.getSystemInfoSync();
 export class Director{ //导演类，控制游戏逻辑
 	static getInstance(){
 		if(!Director.instance){
@@ -11,11 +11,11 @@ export class Director{ //导演类，控制游戏逻辑
 	}
 	constructor(){
 		this.dataStore = DataStore.getInstance();
-		this.moveSpeed = 3;
+		this.moveSpeed = 4;
 	}
 	createPencli(){
-		const minTop = window.innerHeight / 8;
-		const maxTop = window.innerHeight / 2;
+    const minTop = screenHeight / 8;
+    const maxTop = screenHeight / 2;
 		const top = minTop + Math.random() * (maxTop - minTop);
 		this.dataStore.get('penclis').push(new UpPencli(top));
 		this.dataStore.get('penclis').push(new DownPencli(top));
@@ -95,7 +95,7 @@ export class Director{ //导演类，控制游戏逻辑
 				this.dataStore.get('score').isOverPencli = true;
 			}
 
-			if(penclis[0].x <= (window.innerWidth - penclis[0].width) / 2 &&
+			if(penclis[0].x <= (screenWidth - penclis[0].width) / 2 &&
 				penclis.length === 2
 			){
 				this.createPencli();
@@ -105,6 +105,7 @@ export class Director{ //导演类，控制游戏逻辑
 			});
 			this.dataStore.get('land').draw();
 			this.dataStore.get('score').draw();
+      this.dataStore.get('creater').draw();
 			this.dataStore.get('birds').draw();
 			let timer = requestAnimationFrame(()=>{
 				this.run()
