@@ -6,6 +6,7 @@ import {DataStore} from "./js/base/DataStore.js";
 import {Bird} from "./js/player/Bird.js";
 import {StartButton} from "./js/player/StartButton.js";
 import {Score} from "./js/player/Score.js";
+import {ApiExamples} from "./js/ApiExamples"
 export class Main{ //初始化整个游戏的精灵，作为游戏开始的入口
 	constructor(){
 		this.canvas = wx.createCanvas();
@@ -26,6 +27,8 @@ export class Main{ //初始化整个游戏的精灵，作为游戏开始的入�
 		this.dataStore.ctx = this.ctx;
 		this.dataStore.res = map;
     this.createBackgroundMusic();
+    const examples = new ApiExamples();
+    examples.getUserInfo();
 		this.init();
 	}
 	init(){

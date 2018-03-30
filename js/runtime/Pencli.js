@@ -14,7 +14,7 @@ export class Pencli extends Sprite{
 			image.height,
 		);
 		this.top = top;
-    this.moveSpeed = 2;
+    this.moveSpeed = 3;
 	}
 	draw(){
 

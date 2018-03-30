@@ -11,7 +11,7 @@ export class Director{ //导演类，控制游戏逻辑
 	}
 	constructor(){
 		this.dataStore = DataStore.getInstance();
-		this.moveSpeed = 2;
+		this.moveSpeed = 3;
 	}
 	createPencli(){
 		const minTop = window.innerHeight / 8;
@@ -31,7 +31,7 @@ export class Director{ //导演类，控制游戏逻辑
 	}
 	static isStrike(bird,pencli){ //小鸟是否和铅笔撞击
 		let s = false;
-		if(bird.top>pencli.bottom+10||
+		if(bird.top>pencli.bottom||
 			bird.bottom<pencli.top||
 				bird.right<pencli.left||
 				bird.left>pencli.right

@@ -7,7 +7,7 @@ export class DownPencli extends Pencli { //下半部分铅笔
 		super(image, top);
 	}
 	draw(){
-		let gap = window.innerHeight / 5;
+		let gap = window.innerHeight / 8;
 		this.y = this.top + gap;
 		super.draw();
 	}
